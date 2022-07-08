@@ -1,0 +1,28 @@
+<html>
+  <body>
+    <div id="container">
+      <ul class="todo-list"></ul>
+    </div>
+  </body>
+</html>
+
+<script type="module">
+
+const todoList = document.querySelector('.todo-list');
+
+
+  fetch('https://jsonplaceholder.typicode.com/todos')
+  .then((response)=>response.json())
+  .then((data)=>{
+    for (let i=0; i<data.length; i++){
+    let title = data[i].title;
+    const liEl = document.createElement('li'); 
+    const liText = document.createTextNode(title)
+    liEl.appendChild(liText);
+    //document.body.appendChild(liEl) questo funziona, però devo appendere al ul 'todolist'
+    todoList.appendChild(liEl) 
+    }
+
+  })
+
+</script>

@@ -1,0 +1,53 @@
+<html>
+  <body>
+    <div id="container">
+      <h2>Person's Form</h2>
+      <form id="person-form">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+
+  const containerEl = document.getElementById('container')
+  const personFormEl = document.getElementById('person-form')
+  const firstName = document.createElement("input")
+
+  firstName.setAttribute('placeholder', 'firstName');
+  
+  const lastName = document.createElement("input");
+  lastName.setAttribute('placeholder', 'lastName');
+  
+  const age = document.createElement("input");
+  age.setAttribute('placeholder', 'age');
+  
+  const personProperties = [firstName, lastName, age]
+
+  const initForm = () => {
+    for (let index = 0; index < personProperties.length; index++) {
+      let input = personProperties[index]
+      personFormEl.prepend(input)
+      console.log(input);
+    }
+  }
+  initForm()
+
+  const submitPersonForm = () => {
+    let person = {}
+
+    for (let i = 0; i < personProperties.length; i++) {
+    let Key = personProperties[i].placeholder;
+    let Value = personProperties[i].value;
+    person[Key] = Value;
+  }
+    console.log(person);
+    }
+
+    personFormEl.addEventListener('submit', (e) => {
+      e.preventDefault();
+      submitPersonForm();
+    })
+
+</script>

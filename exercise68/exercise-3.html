@@ -1,0 +1,62 @@
+<html>
+  <body>
+    <div id="container">
+      <form>
+        <div>
+          <label>Title</label>
+          <input type="text" id="todo-title" />
+        </div>
+        <div>
+          <label>Completed</label>
+          <input type="checkbox" id="todo-completed" />
+        </div>
+
+        <button type="submit" id="submit-todo">submit</button>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script type= 'module'>
+
+/*
+{title: 'qualcosa' , completed: true}
+*/
+
+const todoTitle = document.querySelector('#todo-title');
+const checkbox = document.getElementById('todo-completed');
+const submit = document.getElementById('submit-todo');
+checkbox.checked = true; 
+
+class objectConstructor{
+ constructor(first, second){
+   this.title = first;
+   this.checkbox = second; 
+ }
+}
+
+const post = new objectConstructor(`${todoTitle.value}`,`${checkbox.checked}`)
+console.log(post)
+
+todoTitle.addEventListener('keyup', function(){
+  post.title = todoTitle.value;
+})
+
+checkbox.addEventListener('change', function(){
+  post.checkbox = checkbox.checked;
+})
+
+submit.addEventListener('click', async function(e){
+  e.preventDefault();
+  console.log(post)
+  let response = await fetch("https://jsonplaceholder.typicode.com/posts",{
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json;charset=utf-8'
+  },
+  body: JSON.stringify(post)
+  })})
+
+
+</script>

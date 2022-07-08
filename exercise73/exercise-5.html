@@ -1,0 +1,40 @@
+<html>
+  <body>
+    <div id="container">
+      <h2>Person's List</h2>
+      <table id="person-table">
+        <tbody></tbody>
+      </table>
+      <button id="add-row">Add row</button>
+    </div>
+  </body>
+</html>
+
+<script>
+
+let firstName = document.createTextNode = 'firstName';
+let lastName = document.createTextNode = 'lastName';
+let age = document.createTextNode = 'age';
+let persons = [firstName, lastName, age];
+
+
+const buttonEl = document.getElementById('add-row');
+buttonEl.addEventListener('click', function(e){
+e.preventDefault();
+addRow()
+})
+
+function addRow(){
+const tBody = document.querySelector('tbody');
+const row = document.createElement('tr');
+tBody.appendChild(row); 
+
+for (let i=0; i<persons.length; i++){
+  const td = document.createElement('td');
+  td.textContent = (persons[i]);
+  td.style.border = "1px solid black"
+  row.appendChild(td);
+}
+}
+
+</script>
